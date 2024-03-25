@@ -148,7 +148,7 @@ def load_model(
 
     dims = ModelDimensions(**checkpoint["dims"])
     model = Whisper(dims)
-    model.load_state_dict(checkpoint["model_state_dict"])
+    model.load_state_dict(checkpoint["model_state_dict"], map_location="cpu")
 
     if alignment_heads is not None:
         model.set_alignment_heads(alignment_heads)
